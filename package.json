@@ -5,6 +5,6 @@
   "author": "MOZGIII",
   "license": "ISC",
   "dependencies": {
-    "elasticdump": "^3.0.1"
+    "elasticdump": "^3.0.2"
   }
 }
