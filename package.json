@@ -1,0 +1,10 @@
+{
+  "name": "hopkibana",
+  "version": "0.0.0",
+  "description": "Export and import kibana's saved objects from elastic",
+  "author": "MOZGIII",
+  "license": "ISC",
+  "dependencies": {
+    "elasticdump": "^3.0.1"
+  }
+}

@@ -1,0 +1,19 @@
+#!/bin/bash
+set -e
+
+ELASTIC_URL="$1"
+INPUT_FILE="$2"
+
+if [[ -z "$ELASTIC_URL" || -z "$INPUT_FILE" ]]; then
+  echo >&2 "Usage: $0 ELASTIC_URL INPUT_FILE [EXTRA ARGS]"
+  echo >&2 'Use "$" at INPUT_FILE to read from stdin.'
+  exit 1
+fi
+
+shift; shift
+
+exec node_modules/.bin/elasticdump \
+  "--input=${INPUT_FILE}" \
+  "--output=${ELASTIC_URL}/.kibana" \
+  --type=data \
+  "$@"

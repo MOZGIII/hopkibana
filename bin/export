@@ -1,0 +1,30 @@
+#!/bin/bash
+set -e
+
+ELASTIC_URL="$1"
+OUPUT_FILE="$2"
+
+if [[ -z "$ELASTIC_URL" || -z "$OUPUT_FILE" ]]; then
+  echo >&2 "Usage: $0 ELASTIC_URL OUPUT_FILE [EXTRA ARGS]"
+ echo >&2 'Use "$" at OUPUT_FILE to dump the data to stdout.'
+  exit 1
+fi
+
+shift ; shift
+
+exec node_modules/.bin/elasticdump \
+  "--input=${ELASTIC_URL}/.kibana" \
+  "--output=${OUPUT_FILE}" \
+  --type=data \
+  --searchBody='{
+    "query": {
+      "terms": {
+        "_type": [
+          "dashboard",
+          "search",
+          "visualization"
+        ]
+      }
+    }
+  }' \
+  "$@"
