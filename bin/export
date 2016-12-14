@@ -6,7 +6,7 @@ OUPUT_FILE="$2"
 
 if [[ -z "$ELASTIC_URL" || -z "$OUPUT_FILE" ]]; then
   echo >&2 "Usage: $0 ELASTIC_URL OUPUT_FILE [EXTRA ARGS]"
- echo >&2 'Use "$" at OUPUT_FILE to dump the data to stdout.'
+  echo >&2 'Use "$" at OUPUT_FILE to dump the data to stdout.'
   exit 1
 fi
 
